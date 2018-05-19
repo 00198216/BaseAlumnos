@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BaseAlumnos</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Lucina</string>
+    <string name="nav_header_subtitle">I challenge my fate</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="agregar_persona">Agregar Persona</string>
+    <string name="ver_notas">Ver Notas</string>
+    <string name="agregar_notas">Agregar Notas</string>
+</resources>

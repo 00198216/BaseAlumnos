@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/addp"
+            android:title="@string/agregar_persona" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/add"
+            android:title="@string/agregar_notas" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/notas"
+            android:title="@string/ver_notas" />
+
+    </group>
+
+
+
+</menu>
