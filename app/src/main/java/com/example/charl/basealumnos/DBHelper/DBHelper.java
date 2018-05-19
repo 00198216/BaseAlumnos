@@ -53,7 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(CAMPO_ID, p.getCarnet());
         values.put(CAMPO_NOMBRE, p.getNombre());
-        values.put(CAMPO_NOTA, p.getNota());
+        values.put(CAMPO_NOTA, "-");
 
         db.insert(TABLA_USUARIO, null, values);
         Toast.makeText(context, "Insertado con exito", Toast.LENGTH_SHORT).show();
