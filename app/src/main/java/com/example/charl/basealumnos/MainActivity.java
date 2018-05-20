@@ -17,10 +17,11 @@ import android.view.MenuItem;
 
 import com.example.charl.basealumnos.DBHelper.DBHelper;
 import com.example.charl.basealumnos.Fragments.Add;
+import com.example.charl.basealumnos.Fragments.List;
 import com.example.charl.basealumnos.Fragments.Modify;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener , Modify.OnFragmentInteractionListener, Add.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener , Modify.OnFragmentInteractionListener, Add.OnFragmentInteractionListener, List.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +101,8 @@ public class MainActivity extends AppCompatActivity
             state=true;
 
         } else if (id == R.id.nav_slideshow) {
+            f= new List();
+            state= true;
 
         }
 

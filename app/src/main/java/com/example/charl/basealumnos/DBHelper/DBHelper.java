@@ -18,6 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CAMPO_ID = "Carnet";
     public static final String CAMPO_NOMBRE = "Nombre";
     public static final String CAMPO_NOTA = "Nota";
+    public static final String SACAR_PROMEDIO = "SELECT AVG("+CAMPO_NOTA +") FROM "+TABLA_USUARIO;
     public static final String CREAR_TABLA_USUARIO = "CREATE TABLE " + TABLA_USUARIO + "(" + CAMPO_ID + " TEXT," + CAMPO_NOMBRE + " TEXT," + CAMPO_NOTA + " TEXT)";
 
     public static DBHelper myDB = null;
@@ -104,23 +105,19 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean promedio() {
+    public int promedio() {
 
-        String[] nota = {CAMPO_NOTA};
-        int promedio = 0;
-        int pos=0;
+        int Avg= 0;
+        Cursor prom = db.rawQuery(SACAR_PROMEDIO, null);
+        prom.moveToFirst();
 
 
-        Cursor cursor1 = db.query(TABLA_USUARIO, nota, CAMPO_NOTA + "=?", nota, null, null, null);
-        while(cursor1.moveToNext()){
-            if(cursor1.getString(pos) !=null) {
-                promedio = promedio+ parseInt(cursor1.getString(pos));
-                pos++;
-            }
-        }
+        Avg =(prom.getInt(0));
 
-        Toast.makeText(context, "Usuario Eliminado con exito", Toast.LENGTH_SHORT).show();
-        return true;
+        prom.close();
+
+
+        return Avg;
     }
 }
 
