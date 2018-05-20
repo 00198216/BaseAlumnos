@@ -105,14 +105,14 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public int promedio() {
+    public float promedio() {
 
-        int Avg= 0;
+        float Avg;
         Cursor prom = db.rawQuery(SACAR_PROMEDIO, null);
         prom.moveToFirst();
 
 
-        Avg =(prom.getInt(0));
+        Avg =(prom.getFloat(0));
 
         prom.close();
 
