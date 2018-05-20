@@ -88,9 +88,11 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] campos = {CAMPO_NOMBRE};
         String[] camposn = {CAMPO_NOTA};
         ContentValues values = new ContentValues();
+        ContentValues values2 = new ContentValues();
         values.put(CAMPO_NOMBRE, p.getNombre());
-        values.put(CAMPO_NOMBRE, p.getNota());
+        values2.put(CAMPO_NOTA, p.getNota());
         db.update(TABLA_USUARIO, values, CAMPO_ID + "=?", parametros);
+        db.update(TABLA_USUARIO, values2, CAMPO_ID + "=?", parametros);
         Toast.makeText(context, "Usuario Actualizado con exito", Toast.LENGTH_SHORT).show();
         return true;
     }

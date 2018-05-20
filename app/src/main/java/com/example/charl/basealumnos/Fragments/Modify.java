@@ -92,6 +92,7 @@ public class Modify extends Fragment {
                 }
                 else{
                     nombre.setText(P.getNombre());
+                    nota.setText(P.getNota());
                 }
             }
         });
@@ -149,6 +150,7 @@ public class Modify extends Fragment {
     public void limpiar(){
         nombre.setText("");
         id.setText("");
+        nota.setText("");
     }
 
     /**

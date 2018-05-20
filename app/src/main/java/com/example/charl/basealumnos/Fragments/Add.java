@@ -28,7 +28,7 @@ public class Add extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private EditText textId,txtNombre,txtNota;
+    private EditText textId,txtNombre;
     private Button btnEnviar;
 
     // TODO: Rename and change types of parameters
@@ -77,6 +77,7 @@ public class Add extends Fragment {
         btnEnviar = vista.findViewById(R.id.btnRegistrar);
         textId = vista.findViewById(R.id.txtId);
         txtNombre = vista.findViewById(R.id.txtNombre);
+
 
 
         btnEnviar.setOnClickListener(new View.OnClickListener() {
