@@ -15,17 +15,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.charl.basealumnos.DBHelper.DBHelper;
+import com.example.charl.basealumnos.Fragments.Add;
 import com.example.charl.basealumnos.Fragments.Modify;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener , Modify.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener , Modify.OnFragmentInteractionListener, Add.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        DBHelper.getInstance(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +92,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            f= new Add();
+            state= true;
+
         } else if (id == R.id.nav_gallery) {
             f=new Modify();
             state=true;

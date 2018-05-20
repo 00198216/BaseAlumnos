@@ -4,12 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.charl.basealumnos.DBHelper.DBHelper;
 import com.example.charl.basealumnos.Data.Alumno;
@@ -18,18 +18,18 @@ import com.example.charl.basealumnos.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Modify.OnFragmentInteractionListener} interface
+ * {@link Add.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Modify#newInstance} factory method to
+ * Use the {@link Add#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Modify extends Fragment {
+public class Add extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private EditText id,nombre,nota;
-    private Button btnBuscar,btnEliminar,btnActualizar,btnLimpiar;
+    private EditText textId,txtNombre,txtNota;
+    private Button btnEnviar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -37,7 +37,7 @@ public class Modify extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public Modify() {
+    public Add() {
         // Required empty public constructor
     }
 
@@ -47,11 +47,11 @@ public class Modify extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Modify.
+     * @return A new instance of fragment Add.
      */
     // TODO: Rename and change types and number of parameters
-    public static Modify newInstance(String param1, String param2) {
-        Modify fragment = new Modify();
+    public static Add newInstance(String param1, String param2) {
+        Add fragment = new Add();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,54 +71,23 @@ public class Modify extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View vista= inflater.inflate(R.layout.fragment_modify, container, false);
+
+        View vista = inflater.inflate(R.layout.fragment_add, container, false);
+
+        btnEnviar = vista.findViewById(R.id.btnRegistrar);
+        textId = vista.findViewById(R.id.txtId);
+        txtNombre = vista.findViewById(R.id.txtNombre);
 
 
-        id = (EditText) vista.findViewById(R.id.txtIdM);
-        nombre = (EditText) vista.findViewById(R.id.txtNombreM);
-        nota = (EditText)vista.findViewById(R.id.txtNotaM);
-        btnBuscar = (Button)vista.findViewById(R.id.btnBuscarM);
-        btnEliminar = (Button)vista.findViewById(R.id.btnEliminarM);
-        btnActualizar = (Button)vista.findViewById(R.id.btnActualizarM);
-        btnLimpiar = (Button) vista.findViewById(R.id.btnLimpiarM);
-
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
+        btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Alumno P = DBHelper.myDB.findUser(id.getText().toString());
-                if(P==null){
-                    Toast.makeText(getContext(),"El usuario no fue encontrado", Toast.LENGTH_SHORT).show();
-                    limpiar();
-                }
-                else{
-                    nombre.setText(P.getNombre());
+                boolean flag = DBHelper.myDB.add(new Alumno(textId.getText().toString(),txtNombre.getText().toString()));
+                if(flag){
+                    Log.d("Edit",txtNombre.getText().toString());
                 }
             }
         });
-
-        btnActualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DBHelper.myDB.editUser(new Alumno(id.getText().toString(),nombre.getText().toString(),nota.getText().toString()));
-            }
-        });
-
-        btnEliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DBHelper.myDB.deleteUser(id.getText().toString());
-                limpiar();
-            }
-        });
-
-        btnLimpiar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                limpiar();
-            }
-        });
-
-
         return vista;
     }
 
@@ -127,6 +96,7 @@ public class Modify extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+
     }
 
     @Override
@@ -146,11 +116,6 @@ public class Modify extends Fragment {
         mListener = null;
     }
 
-    public void limpiar(){
-        nombre.setText("");
-        id.setText("");
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -161,6 +126,7 @@ public class Modify extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

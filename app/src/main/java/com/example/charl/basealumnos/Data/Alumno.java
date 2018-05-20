@@ -16,6 +16,11 @@ public class Alumno {
         this.nota = nota;
     }
 
+    public Alumno(String carnet, String nombre) {
+        this.carnet = carnet;
+        this.nombre = nombre;
+    }
+
     public String getCarnet() {
         return carnet;
     }

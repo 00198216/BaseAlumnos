@@ -18,4 +18,6 @@
     <string name="limpiar">Limpiar</string>
     <string name="nombre">Nombre</string>
     <string name="nota">Nota</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="registrar_alumno">Registrar Alumno</string>
 </resources>
