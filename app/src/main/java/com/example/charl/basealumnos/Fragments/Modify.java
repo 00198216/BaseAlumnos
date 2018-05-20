@@ -33,6 +33,7 @@ public class Modify extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private EditText id,nombre,nota;
     private Button btnBuscar,btnEliminar,btnActualizar,btnLimpiar;
+    private boolean flag=false;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -96,6 +97,7 @@ public class Modify extends Fragment {
                 else{
                     nombre.setText(P.getNombre());
                     nota.setText(P.getNota());
+                    flag=true;
                 }
             }
         });
@@ -103,12 +105,17 @@ public class Modify extends Fragment {
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(parseFloat(nota.getText().toString()) > 100){
-                    Toast.makeText(getContext(), "Nota erronea", Toast.LENGTH_SHORT).show();
-                    limpiar();
-                }
-                else {
-                    DBHelper.myDB.editUser(new Alumno(id.getText().toString(), nombre.getText().toString(), nota.getText().toString()));
+                if (!flag) {
+                    Toast.makeText(getContext(), "No hay usuario para actualizar", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (parseFloat(nota.getText().toString()) > 100) {
+                        Toast.makeText(getContext(), "Nota erronea", Toast.LENGTH_SHORT).show();
+                        limpiar();
+                        flag = false;
+                    } else {
+                        DBHelper.myDB.editUser(new Alumno(id.getText().toString(), nombre.getText().toString(), nota.getText().toString()));
+                        flag=false;
+                    }
                 }
             }
         });

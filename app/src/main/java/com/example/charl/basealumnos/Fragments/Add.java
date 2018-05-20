@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.charl.basealumnos.DBHelper.DBHelper;
 import com.example.charl.basealumnos.Data.Alumno;
@@ -83,9 +84,19 @@ public class Add extends Fragment {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean flag = DBHelper.myDB.add(new Alumno(textId.getText().toString(),txtNombre.getText().toString()));
-                if(flag){
-                    Log.d("Edit",txtNombre.getText().toString());
+                if(!textId.getText().toString().isEmpty()) {
+                    if (!txtNombre.getText().toString().isEmpty()) {
+                        boolean flag = DBHelper.myDB.add(new Alumno(textId.getText().toString(), txtNombre.getText().toString()));
+                        if (flag) {
+                            Log.d("Edit", txtNombre.getText().toString());
+                        }
+                    }
+                    else{
+                        Toast.makeText(getContext(), "Campo vacio", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getContext(), "Campo vacio", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -6,88 +6,112 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragments.Modify"
+    android:background="#000"
     android:id="@+id/mod">
 
     <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical">
-    <LinearLayout
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/txtIdM"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/carnet"
-            android:layout_weight="1"
-            android:layout_marginBottom="10dp"/>
-
-        <Button
-            android:id="@+id/btnBuscarM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/busar"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/txtNombreM"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/nombre"
-            />
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/txtNotaM"
-            android:layout_marginTop="7dp"
+            <EditText
+                android:id="@+id/txtIdM"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:hint="@string/carnet"
+                android:textColor="#FFF"
+                android:textColorHint="#FFF" />
+
+            <Button
+                android:id="@+id/btnBuscarM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0D47A1"
+                android:text="@string/busar"
+                android:textColor="#FFF" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/nota"
-            android:inputType="numberDecimal"
-            />
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/txtNombreM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nombre"
+                android:textColor="#FFF"
+                android:textColorHint="#FFF" />
 
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+            <EditText
+                android:id="@+id/txtNotaM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:hint="@string/nota"
+                android:inputType="numberDecimal"
+                android:textColor="#FFF"
+                android:textColorHint="#FFF" />
 
-        <Button
-            android:id="@+id/btnActualizarM"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/actualizar"
-            android:layout_marginBottom="10dp"
-            />
-        <Button
-            android:id="@+id/btnEliminarM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/eliminar"
-            android:layout_marginBottom="10dp"
-            />
-        <Button
-            android:id="@+id/btnLimpiarM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/limpiar"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnActualizarM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#0D47A1"
+                android:text="@string/actualizar"
+                android:textColor="#FFF" />
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="10dp"
+                android:background="#000" />
+
+            <Button
+                android:id="@+id/btnEliminarM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#0D47A1"
+                android:text="@string/eliminar"
+                android:textColor="#FFF" />
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="10dp"
+                android:background="#000" />
+
+
+            <Button
+                android:id="@+id/btnLimpiarM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#0D47A1"
+                android:text="@string/limpiar"
+                android:textColor="#FFF" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
