@@ -21,4 +21,7 @@
     <string name="eliminar">Eliminar</string>
     <string name="registrar_alumno">Registrar Alumno</string>
     <string name="promedio">Promedio</string>
+    <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="grade">Grade</string>
 </resources>
