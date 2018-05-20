@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import com.example.charl.basealumnos.Data.Alumno;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Integer.parseInt;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -118,6 +121,42 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
         return Avg;
+    }
+
+    public ArrayList<Alumno> prepareInfo(){
+
+        ArrayList<Alumno> list = new ArrayList<Alumno>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLA_USUARIO;
+
+
+            Cursor info = db.rawQuery(selectQuery, null);
+            try {
+
+                // looping through all rows and adding to list
+                if (info.moveToFirst()) {
+                    do {
+                        Alumno obj = new Alumno();
+                        //only one column
+                        obj.setCarnet(info.getString(0));
+                        obj.setNombre(info.getString(1));
+                        obj.setNota(info.getString(2));
+
+                        list.add(obj);
+                    } while (info.moveToNext());
+                }
+
+            } finally {
+                try {
+                    info.close();
+                } catch (Exception ignore) {
+                }
+            }
+
+
+
+        return list;
     }
 }
 

@@ -4,13 +4,20 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.charl.basealumnos.Adapter.StudentAdapter;
 import com.example.charl.basealumnos.DBHelper.DBHelper;
+import com.example.charl.basealumnos.Data.Alumno;
 import com.example.charl.basealumnos.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +32,11 @@ public class List extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    RecyclerView rv;
+    StudentAdapter adapter;
+    ArrayList<Alumno> estudiante;
+
+    LinearLayoutManager lManager;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -72,6 +84,33 @@ public class List extends Fragment {
         pro= vista.findViewById(R.id.Promedio);
         String ans= ""+DBHelper.myDB.promedio();
         pro.setText(ans);
+
+        rv=  vista.findViewById(R.id.recycler);
+
+
+        estudiante= new ArrayList<>();
+
+
+        lManager= new LinearLayoutManager(getActivity());
+
+        rv.setLayoutManager(lManager);
+        estudiante = DBHelper.myDB.prepareInfo();
+
+        adapter= new StudentAdapter(estudiante) {
+            @Override
+            public void onVerClick(View v, int pos) {
+
+            }
+
+            @Override
+            public void Contador(int cont) {
+
+            }
+        };
+
+
+
+        rv.setAdapter(adapter);
 
         return vista;
     }
