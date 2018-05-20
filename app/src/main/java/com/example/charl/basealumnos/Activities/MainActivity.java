@@ -1,4 +1,4 @@
-package com.example.charl.basealumnos;
+package com.example.charl.basealumnos.Activities;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import com.example.charl.basealumnos.DBHelper.DBHelper;
 import com.example.charl.basealumnos.Fragments.Add;
 import com.example.charl.basealumnos.Fragments.List;
 import com.example.charl.basealumnos.Fragments.Modify;
+import com.example.charl.basealumnos.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , Modify.OnFragmentInteractionListener, Add.OnFragmentInteractionListener, List.OnFragmentInteractionListener{
@@ -26,20 +27,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content,new Add()).commit();
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DBHelper.getInstance(this);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

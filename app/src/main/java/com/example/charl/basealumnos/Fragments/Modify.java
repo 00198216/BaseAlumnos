@@ -15,6 +15,9 @@ import com.example.charl.basealumnos.DBHelper.DBHelper;
 import com.example.charl.basealumnos.Data.Alumno;
 import com.example.charl.basealumnos.R;
 
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -100,7 +103,13 @@ public class Modify extends Fragment {
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper.myDB.editUser(new Alumno(id.getText().toString(),nombre.getText().toString(),nota.getText().toString()));
+                if(parseFloat(nota.getText().toString()) > 100){
+                    Toast.makeText(getContext(), "Nota erronea", Toast.LENGTH_SHORT).show();
+                    limpiar();
+                }
+                else {
+                    DBHelper.myDB.editUser(new Alumno(id.getText().toString(), nombre.getText().toString(), nota.getText().toString()));
+                }
             }
         });
 
